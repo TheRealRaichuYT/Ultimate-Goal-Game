@@ -1,0 +1,24 @@
+create new game/;
+create new file/ "Goal"
+create new file/ "Goal2"
+create new file/ "Ball"
+create new file/ "Opponent"
+create new variable/ Score
+create new variable/ Opponent_Score
+if
+      Ball 'touches'/ "Goal" OR: "Goal2"
+        Variable:/ Score = Score + 1;/play sound ("Goal!");
+else
+      Variable:/ Opponent Score = Opponent Score + 1;/play sound ("Goal Failed!");
+if
+      Variable:/ Score = 20;
+        create new text/ "You Win!"/create new button/ "Play Again!"
+if
+      Variable:/ Opponent Score = 20;
+        create new text/ "You Lost!"/create new button/ "Try Again!"
+on event 
+      button:/ "Play Again!" clicked 
+        restart game;
+on event 
+      button:/ "Try Again!" clicked 
+        restart game;        
